@@ -7,7 +7,7 @@
 
 #include <vcl.h>
 
-class Number// Íîìåð
+class Number// ÐÐ¾Ð¼ÐµÑ€
 {
 	public:
 	String ClassN;
@@ -21,7 +21,7 @@ class Number// Íîìåð
 
 
 
-class DoubleListNumber//Ñïèñîê íîìåðîâ
+class DoubleListNumber//Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð½Ð¾Ð¼ÐµÑ€Ð¾Ð²
 {
 	private:
 	Number *head;
@@ -35,7 +35,7 @@ class DoubleListNumber//Ñïèñîê íîìåðîâ
 		tail = NULL;
 	}
 
-	void CreateNode(String classN, int places, String roomNumber, String type)//Äîáàâëåíèå â ñïèñîê
+	void CreateNode(String classN, int places, String roomNumber, String type)//Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð² ÑÐ¿Ð¸ÑÐ¾Ðº
 	{
 		Number *temp = new Number;
 
@@ -56,7 +56,7 @@ class DoubleListNumber//Ñïèñîê íîìåðîâ
 		}
 	}
 
-	void Print()//Âûâîä ñïèñêà
+	void Print()//Ð’Ñ‹Ð²Ð¾Ð´ ÑÐ¿Ð¸ÑÐºÐ°
 	{
 		Number *temp = new Number;
 
@@ -72,29 +72,29 @@ class DoubleListNumber//Ñïèñîê íîìåðîâ
 
 	}
 
-	void reg()//Ôóíêöèÿ ðåãèñòðàöèè
+	void reg()//Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸
 	{
 		Number *temp = new Number;
 
 		temp = head;
-		while (temp->RoomNumber != Form1->ComboBox2->Text)//Èùåì ýëåìåíò ñïèñêà ñ íîìåðîì âûáðàííûì â ComboBox2
+		while (temp->RoomNumber != Form1->ComboBox2->Text)//Ð˜Ñ‰ÐµÐ¼ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ ÑÐ¿Ð¸ÑÐºÐ° Ñ Ð½Ð¾Ð¼ÐµÑ€Ð¾Ð¼ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ñ‹Ð¼ Ð² ComboBox2
 		{
 			temp = temp->next;
 			if (temp == NULL) {
 				return;
 			}
 		}
-		temp->Type = "Not free";//Äåëàåì åãî çàíÿòûì, òåì ñàìûì óäàëÿåì ñîîòâåòñòâóþùèé ýëåìåíò èç ComboBox
+		temp->Type = "Not free";//Ð”ÐµÐ»Ð°ÐµÐ¼ Ð² ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð·Ð°Ð½ÑÑ‚Ñ‹Ð¼, Ñ‚ÐµÐ¼ ÑÐ°Ð¼Ñ‹Ð¼ ÑƒÐ´Ð°Ð»ÑÐµÐ¼ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ Ð¸Ð· ComboBox
 		Form1->ComboBox2->DeleteSelected();
 		Form1->ComboBox2->Text = "Free numbers";
 	}
 
-	void Departure(int k)//Ôóíêöèÿ âûñåëåíèÿ
+	void Departure(int k)//Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð²Ñ‹ÑÐµÐ»ÐµÐ½Ð¸Ñ
 	{
 		Number *temp = new Number;
 
 		temp = head;
-		while (StrToInt(temp->RoomNumber) != k)//Èùååì â ñïèñêå ýëåìíò ñ íîìåðîì k
+		while (StrToInt(temp->RoomNumber) != k)//Ð˜Ñ‰ÐµÐ¼ Ð² ÑÐ¿Ð¸ÑÐºÐµ ÑÐ»ÐµÐ¼Ð½Ñ‚ Ñ Ð½Ð¾Ð¼ÐµÑ€Ð¾Ð¼ k
 		{
 			temp = temp->next;
 			if (temp == NULL) {
@@ -102,7 +102,7 @@ class DoubleListNumber//Ñïèñîê íîìåðîâ
 			}
 		}
 
-		temp->Type = "Free";//Äåëàåì åãî ÷âîáîäíûì, òåì ñàìûì äîáàâëÿåì ñîîòâåòñòâóþùèé ýëåìåíò â ComboBox
+		temp->Type = "Free";//Ð”ÐµÐ»Ð°ÐµÐ¼ Ð² ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ ÑÐ²Ð¾Ð±Ð¾Ð´Ð½Ñ‹Ð¼, Ñ‚ÐµÐ¼ ÑÐ°Ð¼Ñ‹Ð¼ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ Ð² ComboBox
 		Form1->ComboBox2->Items->Add(temp->RoomNumber);
     }
 };
