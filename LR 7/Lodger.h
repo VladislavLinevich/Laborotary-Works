@@ -19,7 +19,7 @@ class Lodger//Посетитель
 	Lodger *prev;
 };
 
-class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
+class DoubleListLodger//Список посетителей
 {
 	private:
 	Lodger *head;
@@ -33,7 +33,7 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 		tail = NULL;
 	}
 
-	void CreateNode(String fullName, int passportNumber, String roomNumber, String dateIn, String dateOut)//Äîáàâëåíèå â ñïèñîê
+	void CreateNode(String fullName, int passportNumber, String roomNumber, String dateIn, String dateOut)//Добавление в список
 	{
 		Lodger *temp = new Lodger;
 
@@ -55,24 +55,24 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 		}
 	}
 
-	void reg()//Ôóíêöèÿ ðåãèñòðàöèè
+	void reg()//Функция регистрации
 	{
 		Lodger *temp = new Lodger;
 
 		temp = head;
-		while (temp->FullName != Form1->ComboBox1->Text)//Èùåì ýëåìåíò ñïèñêà ñ èìåíåì âûáðàííûì â ComboBox1
+		while (temp->FullName != Form1->ComboBox1->Text)//Ищем элемент списка с именем выбранным в ComboBox1
 		{
 			temp = temp->next;
 			if (temp == NULL) {
 				return;
 			}
 		}
-		temp->RoomNumber = Form1->ComboBox2->Text;//Ïðèñâàåâàåì åìó íîìåð, òåì ñàìûì óäàëÿåì ñîîòâåòñòâóþùèé ýëåìåíò èç ComboBox
+		temp->RoomNumber = Form1->ComboBox2->Text;//Присваеваем элементу номер, тем самым удаляем соответствующий элемент из ComboBox
 		Form1->ComboBox1->DeleteSelected();
 		Form1->ComboBox1->Text = "Lodgers";
 	}
 
-	void Print()//Ôóíêöèÿ âûâîäà ñïèñêà
+	void Print()//Функция вывода списка
 	{
 		Lodger *temp = new Lodger;
 
@@ -89,12 +89,12 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 
 	}
 
-	void Departure(int &k)//Ôóíêöèÿ âûñåëåíèÿ
+	void Departure(int &k)//Функция выселения
 	{
 		Lodger *temp = new Lodger;
 
 		temp = head;
-		while ( temp->DateOut != "13.05.21" || temp->RoomNumber == "No")//Èùåì ýëåìåíò ñ ñåãîäíÿøíåé äàòîé âûåçäà è ñ íîìåðîì
+		while ( temp->DateOut != "13.05.21" || temp->RoomNumber == "No")//Ищем элемент с сегодняшней датой выезда и с номером
 		{
 			temp = temp->next;
 			if (temp == NULL) {
@@ -102,8 +102,8 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 			}
 		}
 
-		k = StrToInt(temp->RoomNumber);//Ïåðåìåííîé k ïðèñâàåâàåì íîìåð êîòîðûé îñâîáîäèòñÿ
-		if (temp == head) {//Óäàëÿåì ñîîòâåòñâóþùèé ýëåìåíò
+		k = StrToInt(temp->RoomNumber);//Переменной k присваеваем номер который освободится
+		if (temp == head) {//Удаляем соответсвующий элемент
 			head = head->next;
 			delete temp;
 		} else {
@@ -123,7 +123,7 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 		}
 	}
 
-	int GetSize()//Ðàçìåð ñïèñêà
+	int GetSize()//Размер списка
 	{
 		Lodger *temp = new Lodger;
 		int k;
@@ -138,10 +138,10 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 		return k;
 	}
 
-	void find()//ôóíêöèÿ ïîèñêà ëþäåé ïî çàäàííûì êðèòåðèÿì
+	void find()//функция поиска людей в списке по заданным критериям
 	{
 		Lodger *temp = new Lodger;
-		int k;//Êîëè÷åñòâî ââåäåííûõ êðèòåðèåâ
+		int k;//Количество введенных критериев
 
 		temp = head;
 		k = 0;
@@ -164,7 +164,7 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 
 		while (temp != NULL)
 		{
-			if (k == 5) {//Åñëè êðèòåðèåâ 5 òî ïðîâåðÿåì ýëåìåíò ñïèñêà íà âñå êðèòåðèè è ò.ä.
+			if (k == 5) {//Если критериев 5 то проверяем элемент списка на все критерии и т.д. с меньшим количеством критериев
 				if (temp->FullName == Form1->Edit1->Text && IntToStr(temp->PassportNumber) == Form1->Edit2->Text && temp->RoomNumber == Form1->Edit3->Text && temp->DateIn == Form1->Edit4->Text && temp->DateOut == Form1->Edit5->Text) {
 					Form1->Memo3->Lines->Add(temp->FullName);
 					Form1->Memo3->Lines->Add(IntToStr(temp->PassportNumber));
