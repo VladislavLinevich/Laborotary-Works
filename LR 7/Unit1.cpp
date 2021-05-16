@@ -22,21 +22,21 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button1Click(TObject *Sender)//Обработчик событий Button1
+void __fastcall TForm1::Button1Click(TObject *Sender)//РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ Button1
 {
-	if (FileOpenDialog1->Execute()) { //Проверка открытия файла
-		TFileStream *tfile = new TFileStream(FileOpenDialog1->FileName,fmOpenReadWrite);//Считывем файл
-		TStringList *ts = new TStringList();//Создаем массив строк
+	if (FileOpenDialog1->Execute()) { //РџСЂРѕРІРµСЂРєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°
+		TFileStream *tfile = new TFileStream(FileOpenDialog1->FileName,fmOpenReadWrite);//РЎС‡РёС‚С‹РІРµРј С„Р°Р№Р»
+		TStringList *ts = new TStringList();//РЎРѕР·РґР°РµРј РјР°СЃСЃРёРІ СЃС‚СЂРѕРє
 		ts->LoadFromStream(tfile);
 		for (int i = 0, j = 0; j < (ts->Count)/4; i+=4, j++) {
-			AllNumbers.CreateNode(ts->Strings[i], StrToInt(ts->Strings[i + 1]), ts->Strings[i + 2], ts->Strings[i + 3]); //Добавляем в список
+			AllNumbers.CreateNode(ts->Strings[i], StrToInt(ts->Strings[i + 1]), ts->Strings[i + 2], ts->Strings[i + 3]); //Р”РѕР±Р°РІР»СЏРµРј РІ СЃРїРёСЃРѕРє
 			if (ts->Strings[i + 3] == "Free") {
-				FreeNumbers.CreateNode(ts->Strings[i], StrToInt(ts->Strings[i + 1]), ts->Strings[i + 2], ts->Strings[i + 3]);//Добавляем пустые номера
-				Form1->ComboBox2->Items->Add(ts->Strings[i + 2]);//Добавдяем в ComboBox
+				FreeNumbers.CreateNode(ts->Strings[i], StrToInt(ts->Strings[i + 1]), ts->Strings[i + 2], ts->Strings[i + 3]);//Р”РѕР±Р°РІР»СЏРµРј РїСѓСЃС‚С‹Рµ РЅРѕРјРµСЂР°
+				Form1->ComboBox2->Items->Add(ts->Strings[i + 2]);//Р”РѕР±Р°РІР»СЏРµРј РІ ComboBox
 			} else {
-				NotFreeNumbers.CreateNode(ts->Strings[i], StrToInt(ts->Strings[i + 1]), ts->Strings[i + 2], ts->Strings[i + 3]);//Добавляем занятые номера
+				NotFreeNumbers.CreateNode(ts->Strings[i], StrToInt(ts->Strings[i + 1]), ts->Strings[i + 2], ts->Strings[i + 3]);//Р”РѕР±Р°РІР»СЏРµРј Р·Р°РЅСЏС‚С‹Рµ РЅРѕРјРµСЂР°
 			}
-			Memo1->Lines->Add(ts->Strings[i]);//Выводим в Memo
+			Memo1->Lines->Add(ts->Strings[i]);//Р’С‹РІРѕРґРёРј РІ Memo
 			Memo1->Lines->Add(ts->Strings[i + 1]);
 			Memo1->Lines->Add(ts->Strings[i + 2]);
 			Memo1->Lines->Add(ts->Strings[i + 3]);
@@ -44,25 +44,25 @@ void __fastcall TForm1::Button1Click(TObject *Sender)//Обработчик событий Button
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button3Click(TObject *Sender)//Обработчик событий Button3
+void __fastcall TForm1::Button3Click(TObject *Sender)//РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ Button3
 {
 	Memo1->Clear();
-	FreeNumbers.Print();//Вывод списка пустых номеров
+	FreeNumbers.Print();//Р’С‹РІРѕРґ СЃРїРёСЃРєР° РїСѓСЃС‚С‹С… РЅРѕРјРµСЂРѕРІ
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button4Click(TObject *Sender)//Обработчик событий Button4
+void __fastcall TForm1::Button4Click(TObject *Sender)//РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ Button4
 {
 	Memo1->Clear();
-	NotFreeNumbers.Print();//Вывод списка занятых номеров
+	NotFreeNumbers.Print();//Р’С‹РІРѕРґ СЃРїРёСЃРєР° Р·Р°РЅСЏС‚С‹С… РЅРѕРјРµСЂРѕРІ
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button5Click(TObject *Sender)//Обработчик событий Button5
+void __fastcall TForm1::Button5Click(TObject *Sender)//РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ Button5
 {
     Memo1->Clear();
-	AllNumbers.Print();//Вывод списка всех номеров
+	AllNumbers.Print();//Р’С‹РІРѕРґ СЃРїРёСЃРєР° РІСЃРµС… РЅРѕРјРµСЂРѕРІ
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button6Click(TObject *Sender)//Обработчик событий Button6
+void __fastcall TForm1::Button6Click(TObject *Sender)//РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ Button6. Р’ РЅРµРј РІСЃРµ С‚Р°Рє Р¶Рµ, РєР°Рє Рё РІ Button1
 {
 	if (FileOpenDialog1->Execute()){
 		TFileStream *tfile = new TFileStream(FileOpenDialog1->FileName,fmOpenReadWrite);
@@ -82,9 +82,9 @@ void __fastcall TForm1::Button6Click(TObject *Sender)//Обработчик событий Button
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button8Click(TObject *Sender)//Обработчик событий Button8
+void __fastcall TForm1::Button8Click(TObject *Sender)//РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ Button8
 {
-	Lodgers.reg();//Используем функции регистрации посетителя
+	Lodgers.reg();//РСЃРїРѕР»СЊР·СѓРµРј С„СѓРЅРєС†РёРё СЂРµРіРёСЃС‚СЂР°С†РёРё РїРѕСЃРµС‚РёС‚РµР»СЏ
 	AllNumbers.reg();
 	Memo2->Clear();
 	Lodgers.Print();
@@ -92,11 +92,11 @@ void __fastcall TForm1::Button8Click(TObject *Sender)//Обработчик событий Button
 	AllNumbers.Print();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button9Click(TObject *Sender)//Обработчик событий Button9
+void __fastcall TForm1::Button9Click(TObject *Sender)//РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ Button9
 {
-	int k;//Для запрминания какой номер освободился
+	int k;//Р”Р»СЏ Р·Р°РїСЂРјРёРЅР°РЅРёСЏ РєР°РєРѕР№ РЅРѕРјРµСЂ РѕСЃРІРѕР±РѕРґРёР»СЃСЏ
 	for (int i = 0; i < Lodgers.GetSize(); i++) {
-		Lodgers.Departure(k);//Используем функции выселения посетителя
+		Lodgers.Departure(k);//РСЃРїРѕР»СЊР·СѓРµРј С„СѓРЅРєС†РёРё РІС‹СЃРµР»РµРЅРёСЏ РїРѕСЃРµС‚РёС‚РµР»СЏ
 		AllNumbers.Departure(k);
         k = 0;
 	}
@@ -107,25 +107,25 @@ void __fastcall TForm1::Button9Click(TObject *Sender)//Обработчик событий Button
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button10Click(TObject *Sender)//Обработчик событий Button10
+void __fastcall TForm1::Button10Click(TObject *Sender)//РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ Button10
 {
 	Memo3->Clear();
-	Lodgers.find();//Ищем людей по заданным критериям
+	Lodgers.find();//РС‰РµРј Р»СЋРґРµР№ РїРѕ Р·Р°РґР°РЅРЅС‹Рј РєСЂРёС‚РµСЂРёСЏРј
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button2Click(TObject *Sender)//Обработчик событий Button2
+void __fastcall TForm1::Button2Click(TObject *Sender)//РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ Button2
 {
 	if (FileSaveDialog1->Execute()) {
-		Memo1->Lines->SaveToFile(FileSaveDialog1->FileName);//Сохранение в файл
+		Memo1->Lines->SaveToFile(FileSaveDialog1->FileName);//РЎРѕС…СЂР°РЅРµРЅРёРµ РІ С„Р°Р№Р»
 	}
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button7Click(TObject *Sender)//Обработчик событий Button7
+void __fastcall TForm1::Button7Click(TObject *Sender)//РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ Button7
 {
 	if (FileSaveDialog1->Execute()) {
-		Memo2->Lines->SaveToFile(FileSaveDialog1->FileName);//Сохранение в файл
+		Memo2->Lines->SaveToFile(FileSaveDialog1->FileName);//РЎРѕС…СЂР°РЅРµРЅРёРµ РІ С„Р°Р№Р»
 	}
 }
 //---------------------------------------------------------------------------
