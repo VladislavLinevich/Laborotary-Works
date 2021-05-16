@@ -6,7 +6,7 @@
 #endif
 #include <vcl.h>
 
-class Lodger//Ïîñåòèòåëü
+class Lodger//ÐŸÐ¾ÑÐµÑ‚Ð¸Ñ‚ÐµÐ»ÑŒ
 {
     public:
 	String FullName;
@@ -19,7 +19,7 @@ class Lodger//Ïîñåòèòåëü
 	Lodger *prev;
 };
 
-class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
+class DoubleListLodger//Ã‘Ã¯Ã¨Ã±Ã®Ãª Ã¯Ã®Ã±Ã¥Ã²Ã¨Ã²Ã¥Ã«Ã¥Ã©
 {
 	private:
 	Lodger *head;
@@ -33,7 +33,7 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 		tail = NULL;
 	}
 
-	void CreateNode(String fullName, int passportNumber, String roomNumber, String dateIn, String dateOut)//Äîáàâëåíèå â ñïèñîê
+	void CreateNode(String fullName, int passportNumber, String roomNumber, String dateIn, String dateOut)//Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã¨Ã¥ Ã¢ Ã±Ã¯Ã¨Ã±Ã®Ãª
 	{
 		Lodger *temp = new Lodger;
 
@@ -55,24 +55,24 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 		}
 	}
 
-	void reg()//Ôóíêöèÿ ðåãèñòðàöèè
+	void reg()//Ã”Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã°Ã¥Ã£Ã¨Ã±Ã²Ã°Ã Ã¶Ã¨Ã¨
 	{
 		Lodger *temp = new Lodger;
 
 		temp = head;
-		while (temp->FullName != Form1->ComboBox1->Text)//Èùåì ýëåìåíò ñïèñêà ñ èìåíåì âûáðàííûì â ComboBox1
+		while (temp->FullName != Form1->ComboBox1->Text)//ÃˆÃ¹Ã¥Ã¬ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã² Ã±Ã¯Ã¨Ã±ÃªÃ  Ã± Ã¨Ã¬Ã¥Ã­Ã¥Ã¬ Ã¢Ã»Ã¡Ã°Ã Ã­Ã­Ã»Ã¬ Ã¢ ComboBox1
 		{
 			temp = temp->next;
 			if (temp == NULL) {
 				return;
 			}
 		}
-		temp->RoomNumber = Form1->ComboBox2->Text;//Ïðèñâàåâàåì åìó íîìåð, òåì ñàìûì óäàëÿåì ñîîòâåòñòâóþùèé ýëåìåíò èç ComboBox
+		temp->RoomNumber = Form1->ComboBox2->Text;//ÃÃ°Ã¨Ã±Ã¢Ã Ã¥Ã¢Ã Ã¥Ã¬ Ã¥Ã¬Ã³ Ã­Ã®Ã¬Ã¥Ã°, Ã²Ã¥Ã¬ Ã±Ã Ã¬Ã»Ã¬ Ã³Ã¤Ã Ã«Ã¿Ã¥Ã¬ Ã±Ã®Ã®Ã²Ã¢Ã¥Ã²Ã±Ã²Ã¢Ã³Ã¾Ã¹Ã¨Ã© Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã² Ã¨Ã§ ComboBox
 		Form1->ComboBox1->DeleteSelected();
 		Form1->ComboBox1->Text = "Lodgers";
 	}
 
-	void Print()//Ôóíêöèÿ âûâîäà ñïèñêà
+	void Print()//Ã”Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã¢Ã»Ã¢Ã®Ã¤Ã  Ã±Ã¯Ã¨Ã±ÃªÃ 
 	{
 		Lodger *temp = new Lodger;
 
@@ -89,12 +89,12 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 
 	}
 
-	void Departure(int &k)//Ôóíêöèÿ âûñåëåíèÿ
+	void Departure(int &k)//Ã”Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã¢Ã»Ã±Ã¥Ã«Ã¥Ã­Ã¨Ã¿
 	{
 		Lodger *temp = new Lodger;
 
 		temp = head;
-		while ( temp->DateOut != "13.05.21" || temp->RoomNumber == "No")//Èùåì ýëåìåíò ñ ñåãîäíÿøíåé äàòîé âûåçäà è ñ íîìåðîì
+		while ( temp->DateOut != "13.05.21" || temp->RoomNumber == "No")//ÃˆÃ¹Ã¥Ã¬ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã² Ã± Ã±Ã¥Ã£Ã®Ã¤Ã­Ã¿Ã¸Ã­Ã¥Ã© Ã¤Ã Ã²Ã®Ã© Ã¢Ã»Ã¥Ã§Ã¤Ã  Ã¨ Ã± Ã­Ã®Ã¬Ã¥Ã°Ã®Ã¬
 		{
 			temp = temp->next;
 			if (temp == NULL) {
@@ -102,8 +102,8 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 			}
 		}
 
-		k = StrToInt(temp->RoomNumber);//Ïåðåìåííîé k ïðèñâàåâàåì íîìåð êîòîðûé îñâîáîäèòñÿ
-		if (temp == head) {//Óäàëÿåì ñîîòâåòñâóþùèé ýëåìåíò
+		k = StrToInt(temp->RoomNumber);//ÃÃ¥Ã°Ã¥Ã¬Ã¥Ã­Ã­Ã®Ã© k Ã¯Ã°Ã¨Ã±Ã¢Ã Ã¥Ã¢Ã Ã¥Ã¬ Ã­Ã®Ã¬Ã¥Ã° ÃªÃ®Ã²Ã®Ã°Ã»Ã© Ã®Ã±Ã¢Ã®Ã¡Ã®Ã¤Ã¨Ã²Ã±Ã¿
+		if (temp == head) {//Ã“Ã¤Ã Ã«Ã¿Ã¥Ã¬ Ã±Ã®Ã®Ã²Ã¢Ã¥Ã²Ã±Ã¢Ã³Ã¾Ã¹Ã¨Ã© Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²
 			head = head->next;
 			delete temp;
 		} else {
@@ -123,7 +123,7 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 		}
 	}
 
-	int GetSize()//Ðàçìåð ñïèñêà
+	int GetSize()//ÃÃ Ã§Ã¬Ã¥Ã° Ã±Ã¯Ã¨Ã±ÃªÃ 
 	{
 		Lodger *temp = new Lodger;
 		int k;
@@ -138,10 +138,10 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 		return k;
 	}
 
-	void find()//ôóíêöèÿ ïîèñêà ëþäåé ïî çàäàííûì êðèòåðèÿì
+	void find()//Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã¯Ã®Ã¨Ã±ÃªÃ  Ã«Ã¾Ã¤Ã¥Ã© Ã¯Ã® Ã§Ã Ã¤Ã Ã­Ã­Ã»Ã¬ ÃªÃ°Ã¨Ã²Ã¥Ã°Ã¨Ã¿Ã¬
 	{
 		Lodger *temp = new Lodger;
-		int k;//Êîëè÷åñòâî ââåäåííûõ êðèòåðèåâ
+		int k;//ÃŠÃ®Ã«Ã¨Ã·Ã¥Ã±Ã²Ã¢Ã® Ã¢Ã¢Ã¥Ã¤Ã¥Ã­Ã­Ã»Ãµ ÃªÃ°Ã¨Ã²Ã¥Ã°Ã¨Ã¥Ã¢
 
 		temp = head;
 		k = 0;
@@ -164,7 +164,7 @@ class DoubleListLodger//Ñïèñîê ïîñåòèòåëåé
 
 		while (temp != NULL)
 		{
-			if (k == 5) {//Åñëè êðèòåðèåâ 5 òî ïðîâåðÿåì ýëåìåíò ñïèñêà íà âñå êðèòåðèè è ò.ä.
+			if (k == 5) {//Ã…Ã±Ã«Ã¨ ÃªÃ°Ã¨Ã²Ã¥Ã°Ã¨Ã¥Ã¢ 5 Ã²Ã® Ã¯Ã°Ã®Ã¢Ã¥Ã°Ã¿Ã¥Ã¬ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã² Ã±Ã¯Ã¨Ã±ÃªÃ  Ã­Ã  Ã¢Ã±Ã¥ ÃªÃ°Ã¨Ã²Ã¥Ã°Ã¨Ã¨ Ã¨ Ã².Ã¤.
 				if (temp->FullName == Form1->Edit1->Text && IntToStr(temp->PassportNumber) == Form1->Edit2->Text && temp->RoomNumber == Form1->Edit3->Text && temp->DateIn == Form1->Edit4->Text && temp->DateOut == Form1->Edit5->Text) {
 					Form1->Memo3->Lines->Add(temp->FullName);
 					Form1->Memo3->Lines->Add(IntToStr(temp->PassportNumber));
